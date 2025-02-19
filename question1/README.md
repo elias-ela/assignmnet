@@ -68,6 +68,23 @@ npm install
   ```
   Reports are saved in the `reports/` folder.
 
+## Test execution order
+  ```
+  npm test -- --spec cypress/e2e/registration.cy.js
+  ```
+  ```
+  npm test -- --spec cypress/e2e/login.cy.js
+  ```
+  ```
+  npm test -- --spec cypress/e2e/placeOrder.cy.js
+  ```
+  ```
+  npm test -- --spec cypress/e2e/placeOrderFromWishlist.cy.js
+  ```
+  ```
+  npm test -- --spec cypress/e2e/search.cy.js
+  ```
+
 ## Key Features
 - **Page Object Model (POM)**: for better maintainability.
 - **External JSON Data**: Fetching test data from `cypress/fixtures/testData.json`.

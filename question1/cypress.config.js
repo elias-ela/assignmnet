@@ -9,6 +9,7 @@ module.exports = defineConfig({
     password: process.env.PASSWORD,
   },
   e2e: {
+    defaultCommandTimeout: 10000,
     setupNodeEvents(on, config) {
       config.baseUrl = process.env.BASE_URL
 

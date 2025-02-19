@@ -30,4 +30,10 @@ describe("Registration flow with login validation", () => {
 
     accountRegistrationPage.checkMessage("error", "There is already an account with this email address.")
   });
+
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.window().then((win) => win.sessionStorage.clear());
+  });
 });

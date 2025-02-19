@@ -4,7 +4,7 @@ class HomePage {
   }
 
   clickOnCreateAccountLink() {
-    cy.get(`.panel > .header > :nth-child(3) > a`).click()
+    cy.get(`.panel > .header > :nth-child(3) > a`).click({force: true})
   }
 
   clickOnsignInBtn() {
