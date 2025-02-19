@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "7bb70003-cb27-43f1-a95e-0c11eeb5075b",
+		"name": "Swagger Petstore",
+		"description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20876362"
+	},
+	"item": [
+		{
+			"name": "Add a new pet to the store",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Content-Type is application/json\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");",
+							"});",
+							"",
+							"pm.test(\"Request body matches the response\", () => {",
+							"    const requestBody = JSON.parse(pm.request.body.raw);",
+							"    const responseBody = pm.response.json();",
+							"",
+							"    pm.expect(responseBody.id).to.eql(requestBody.id);",
+							"    pm.expect(responseBody.name).to.eql(requestBody.name);",
+							"    pm.expect(responseBody.photoUrls).to.eql(requestBody.photoUrls);",
+							"    pm.expect(responseBody.category).to.eql(requestBody.category);",
+							"    pm.expect(responseBody.tags).to.eql(requestBody.tags);",
+							"    pm.expect(responseBody.status).to.eql(requestBody.status);",
+							"    ",
+							"    pm.collectionVariables.set(\"petId\", responseBody.id);",
+							"    pm.collectionVariables.set(\"data\", pm.request.body.raw)",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"abcd\",\n    \"photoUrls\": [\n        \"https://google.com\"\n    ],\n    \"id\": 1234,\n    \"category\": {\n        \"id\": 12,\n        \"name\": \"qwe\"\n    },\n    \"tags\": [\n        {\n            \"id\": 45,\n            \"name\": \"rtu\"\n        }\n    ],\n    \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Content-Type is application/json\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");",
+							"});",
+							"",
+							"pm.test(\"Request body matches the response\", () => {",
+							"    const data = JSON.parse(pm.collectionVariables.get(\"data\"));",
+							"    const responseBody = pm.response.json();",
+							"",
+							"    pm.expect(responseBody.id).to.eql(data.id);",
+							"    pm.expect(responseBody.name).to.eql(data.name);",
+							"    pm.expect(responseBody.photoUrls).to.eql(data.photoUrls);",
+							"    pm.expect(responseBody.category).to.eql(data.category);",
+							"    pm.expect(responseBody.tags).to.eql(data.tags);",
+							"    pm.expect(responseBody.status).to.eql(data.status);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/:petId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						":petId"
+					],
+					"variable": [
+						{
+							"key": "petId",
+							"value": "{{petId}}",
+							"description": "(Required) ID of pet to return"
+						}
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2"
+		},
+		{
+			"key": "petId",
+			"value": ""
+		},
+		{
+			"key": "data",
+			"value": ""
+		}
+	]
+}
