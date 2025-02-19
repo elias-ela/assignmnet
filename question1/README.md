@@ -27,8 +27,8 @@ Ensure you have the following installed:
 ## Project Setup
 1. Clone the repository and install dependencies:
 ```
-git clone https://github.com/elias-ela/bamboo.git
-cd bamboo/question1
+git clone https://github.com/elias-ela/assignmnet.git
+cd assignmnet/question1
 ```
 2. Install dependencies:
 ```
