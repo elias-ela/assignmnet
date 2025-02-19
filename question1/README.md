@@ -55,7 +55,7 @@ npm install
   ```
 - Run a Specific Test File:
   ```
-  npm test --spec cypress/e2e/login.cy.js
+  npm test -- --spec cypress/e2e/login.cy.js
   ```
 5. View test reports:
 - Run Tests and Generate Report:
