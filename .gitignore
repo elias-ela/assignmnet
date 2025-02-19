@@ -23,3 +23,6 @@ cypress/downloads/
 .vscode/
 .idea/
 .DS_Store
+
+# Report
+reports
