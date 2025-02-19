@@ -1,0 +1,25 @@
+{
+  "person": {
+    "firstname": "fname",
+    "lastname": "lname",
+    "address": "Test address",
+    "city": "Test city",
+    "state": "Alaska",
+    "zip": "99540",
+    "country": "United States",
+    "phoneNumber": "+123456789" 
+  },
+  "items": {
+    "item1": {
+      "name": "Proteus Fitness Jackshirt",
+      "size": "L",
+      "color": "Black",
+      "qty": 1
+    },
+    "item2": {
+      "name": "Rival Field Messenger",
+      "qty": 2
+    }
+  },
+  "sm": "tablerate_bestway"
+}
