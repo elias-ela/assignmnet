@@ -6,9 +6,13 @@ This project contains end-to-end (E2E) test automation scripts using Cypress. Th
 The following test cases are automated,
 
 **Test Case (A):** Registration flow with login validation.<br>
+
 **Test Case (B):** Place an order with multiple products.<br>
+
 **Test Case (C):** Add products to Wishlist and checkout from the Wishlist.<br>
+
 **Test Case (D):** Search and validate results.<br>
+
 
 ## Getting Started
 
