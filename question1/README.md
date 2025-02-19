@@ -23,8 +23,8 @@ Ensure you have the following installed:
 ## Project Setup
 1. Clone the repository and install dependencies:
 ```
-git clone https://github.com/your-repo/cypress-test-automation.git
-cd cypress-test-automation
+git clone https://github.com/elias-ela/bamboo.git
+cd bamboo/question1
 ```
 2. Install dependencies:
 ```
