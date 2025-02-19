@@ -93,6 +93,6 @@ npm install
 
 ## Possible Issues
 
- - Just incase there is a failure please re-run the test using a different account information. (*which can be updated in the `.env` file*)
- - Best to use new account information when executing placeorder and account registration test cases.
+ - Just in case there is a failure please re-run the test using a different account information. (*which can be updated in the `.env` file*)
+ - Best to use new account information when executing `placeorder` and `account registration` test cases.
   
