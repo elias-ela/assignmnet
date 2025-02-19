@@ -20,7 +20,7 @@ module.exports = defineConfig({
     reporterOptions: {
       reportDir: "reports",
       reportFilename: "index",
-      overwrite: true,
+      overwrite: false,
       html: true,
       json: true,
     },

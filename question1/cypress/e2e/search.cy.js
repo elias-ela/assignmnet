@@ -5,12 +5,7 @@ import dashboardPage from "../pages/dashboardPage";
 describe("Search", () => {
   before(() => {
     cy.session("login", () => {
-      homePage.visit();
-      homePage.clickOnsignInBtn();
-
-      loginPage.enterUsername(Cypress.env('email'));
-      loginPage.enterPassword(Cypress.env('password'))
-      loginPage.submit();
+      cy.login(Cypress.env("email"), Cypress.env("password"));
     });
   });
 
@@ -33,5 +28,11 @@ describe("Search", () => {
     dashboardPage.checkErrorMessageForSearch(
       `Your search returned no results.`
     );
+  });
+
+  after(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.window().then((win) => win.sessionStorage.clear());
   });
 });

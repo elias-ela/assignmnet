@@ -6,12 +6,7 @@ import checkoutPage from "../pages/checkoutPage";
 describe("Place Order", () => {
   before(() => {
     cy.session("login", () => {
-      homePage.visit();
-      homePage.clickOnsignInBtn();
-
-      loginPage.enterUsername(Cypress.env("email"));
-      loginPage.enterPassword(Cypress.env("password"));
-      loginPage.submit();
+      cy.login(Cypress.env("email"), Cypress.env("password"));
     });
   });
 
@@ -77,5 +72,11 @@ describe("Place Order", () => {
       checkoutPage.placeOrder();
       checkoutPage.checkMessage("Thank you for your purchase!");
     });
+  });
+
+  after(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.window().then((win) => win.sessionStorage.clear());
   });
 });

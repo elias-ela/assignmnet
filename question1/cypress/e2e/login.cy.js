@@ -1,34 +1,30 @@
 import loginPage from "../pages/loginPage";
-import homePage from "../pages/homePage";
 import dashboardPage from "../pages/dashboardPage";
 
 describe("Registration flow with login validation", () => {
-  beforeEach(() => {
-    homePage.visit()
-    homePage.clickOnsignInBtn();
-  });
-
   it("should login with a correct email and correct password", () => {
-    loginPage.enterUsername(Cypress.env('email'));
-    loginPage.enterPassword(Cypress.env('password'))
-    loginPage.submit()
+    cy.login(Cypress.env("email"), Cypress.env("password"));
 
     dashboardPage.checkLoginInfoLabel(`${Cypress.env('firstname')} ${Cypress.env('lastname')}`)
-  })
+  });
 
-  it("should not login with incorrect email and correct password", () => {
-    loginPage.enterUsername(`email@test.com`);
-    loginPage.enterPassword(Cypress.env('password'))
-    loginPage.submit()
+  it("should not login with incorrect email and/or password", () => {
+    cy.login("email@test.com", Cypress.env("password"));
 
-    loginPage.checkErrorMessage(`The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.`)
-  })
+    loginPage.checkErrorMessage(
+      `The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.`
+    );
 
-  it("should not login with correct email and incorrect password", () => {
-    loginPage.enterUsername(Cypress.env('email'));
-    loginPage.enterPassword(`Test!@#123qwe`)
-    loginPage.submit()
+    cy.login(Cypress.env("email"), "random");
 
-    loginPage.checkErrorMessage(`The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.`)
-  })
+    loginPage.checkErrorMessage(
+      `The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.`
+    );
+  });
+
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.window().then((win) => win.sessionStorage.clear());
+  });
 });
